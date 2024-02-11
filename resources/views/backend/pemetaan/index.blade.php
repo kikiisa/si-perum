@@ -63,8 +63,8 @@
                                                         <form action="{{Route("master-pemetaan.destroy",$item->id)}}" method="POST">
                                                             @method("DELETE")
                                                             @csrf
-                                                            <a href="{{Route('master-pemetaan.edit', $item->uuid)}}" class="btn btn-warning">Edit</a>
-                                                            <button class="btn btn-danger" onclick="return confirm('apakah anda yakin ingin menghapus data ini ?')">Hapus</button>
+                                                            <a href="{{Route('master-pemetaan.edit', $item->uuid)}}" class="badge bg-warning">Edit</a>
+                                                            <button class="badge bg-danger border-0" onclick="return confirm('apakah anda yakin ingin menghapus data ini ?')">Hapus</button>
                                                         </form>
                                                     </td>
                                                 </tr>

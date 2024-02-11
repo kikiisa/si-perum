@@ -32,6 +32,14 @@ class UploadService
         $result = self::PATH . $name;
         return $result;
     }
+    public function removedFilesImage($file,$oldFile)
+    {
+        File::delete($oldFile);
+        $name = $file->hashName();
+        $move = $file->move(self::IMAGE,$name);
+        $result = self::IMAGE . $name;
+        return $result;
+    }
 
     public function removedFilesProfile($file,$oldFile,$path)
     {

@@ -20,6 +20,14 @@
             </div>
             <div class="page-content">
                 <section class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <img src="{{ asset($data->profile) }}" class="w-100" alt="image">
+                                
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-12 col-lg-12">
                         <div class="card">
                             <div class="card-body">
@@ -91,6 +99,12 @@
                                                 <label>Luas Lahan (Meter)</label>
                                                 <input type="number" id="luas" value="{{$data->luas_lahan}}" name="luas_lahan" placeholder="Luas Lahan"
                                                     class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label>Gambar</label>
+                                                <input type="file" class="form-control" id="image" name="profile">
                                             </div>
                                         </div>
                                     </div>

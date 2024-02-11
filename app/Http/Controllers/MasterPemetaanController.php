@@ -168,11 +168,20 @@ class MasterPemetaanController extends Controller
             "izin_dampak_lalu_lintas" => "sometimes|required|mimes:pdf|max:2048",
             "status" => "sometimes|required",
             "note" => "sometimes",
+            "profile" => "sometimes|mimes:jpg,jpeg,png,webp|max:2048"
         ], [
             "required" => ":attribute harus diisi",
             "numeric" => ":attribute harus berupa angka",
-            "mimes" => "surat :attribute harus berupa pdf",
-            "max" => "surat :attribute maksimal 2 MB"
+            "profile.mimes" => ":attribute harus berupa jpg, jpeg, png, webp",
+            "izin_lingkungan_setempat.mimes" => ":attribute harus berupa pdf",
+            "rutr.mimes" => ":attribute harus berupa pdf",
+            "izin_pemanfaatan_tanah.mimes" => ":attribute harus berupa pdf",
+            "izin_prinsip.mimes" => ":attribute harus berupa pdf",
+            "izin_lokasi.mimes" => ":attribute harus berupa pdf",
+            "izin_badan_lingkungan_hidup.mimes" => ":attribute harus berupa pdf",
+            "izin_dampak_lalu_lintas.mimes" => ":attribute harus berupa pdf",
+            "profile.max" => ":attribute maksimal 2 MB",
+            "max" => ":attribute maksimal 2 MB"
         ]);
         $data->update([
             "nama_perumahan" => $request->nama_perumahan,
@@ -210,6 +219,7 @@ class MasterPemetaanController extends Controller
                 ? $this->upload->removedFiles($request->file("izin_dampak_lalu_lintas"),$data->izin_dampak_lalu_lintas)
                 : $data->izin_dampak_lalu_lintas,
             "note" => $request->note ? $request->note : $data->note,
+            "profile" => $request->file("profile") ? $this->upload->removedFilesImage($request->file("profile"),$data->profile) : $data->profile,
             "status" => $request->status ? $request->status : $data->status
         ]);
 
