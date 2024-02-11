@@ -26,7 +26,7 @@ class MasterPemetaanController extends Controller
     {
         return response()->view("backend.pemetaan.index", [
             "title" => 'Master Pemetaan - SIPERUM',
-            "data" => Auth::check() ? ProfilePemetaan::where("user_id", Auth::user()->id)->get() : ProfilePemetaan::all()
+            "data" => Auth::check() ? ProfilePemetaan::with("vendor")->where("user_id", Auth::user()->id)->get() : ProfilePemetaan::with("vendor")->get()
         ]);
     }
 
@@ -75,10 +75,19 @@ class MasterPemetaanController extends Controller
             "izin_lokasi" => "required|mimes:pdf|max:2048",
             "izin_badan_lingkungan_hidup" => "required|mimes:pdf|max:2048",
             "izin_dampak_lalu_lintas" => "required|mimes:pdf|max:2048",
+            "profile" => "required|mimes:jpg,jpeg,png,webp|max:2048",
         ], [
             "required" => ":attribute harus diisi",
             "numeric" => ":attribute harus berupa angka",
-            "mimes" => ":attribute harus berupa pdf",
+            "profile.mimes" => ":attribute harus berupa jpg, jpeg, png, webp",
+            "izin_lingkungan_setempat.mimes" => ":attribute harus berupa pdf",
+            "rutr.mimes" => ":attribute harus berupa pdf",
+            "izin_pemanfaatan_tanah.mimes" => ":attribute harus berupa pdf",
+            "izin_prinsip.mimes" => ":attribute harus berupa pdf",
+            "izin_lokasi.mimes" => ":attribute harus berupa pdf",
+            "izin_badan_lingkungan_hidup.mimes" => ":attribute harus berupa pdf",
+            "izin_dampak_lalu_lintas.mimes" => ":attribute harus berupa pdf",
+            "profile.max" => ":attribute maksimal 2 MB",
             "max" => ":attribute maksimal 2 MB"
         ]);
         $data = ProfilePemetaan::create([
@@ -96,7 +105,8 @@ class MasterPemetaanController extends Controller
             "izin_lokasi" => $this->upload->uploadFile($request->file("izin_lokasi")),
             "izin_badan_lingkungan_hidup" => $this->upload->uploadFile($request->file("izin_badan_lingkungan_hidup")),
             "izin_dampak_lalu_lintas" => $this->upload->uploadFile($request->file("izin_dampak_lalu_lintas")),
-            "user_id" => Auth::user()->id
+            "user_id" => Auth::user()->id,
+            "profile" => $this->upload->uploadImage($request->file("profile")),
         ]);
         if ($data) {
             return redirect()->route("master-pemetaan.index")->with("success", "Data pemetaan berhasil ditambahkan");
@@ -157,7 +167,7 @@ class MasterPemetaanController extends Controller
             "izin_badan_lingkungan_hidup" => "sometimes|required|mimes:pdf|max:2048",
             "izin_dampak_lalu_lintas" => "sometimes|required|mimes:pdf|max:2048",
             "status" => "sometimes|required",
-            "note" => "sometimes|required"
+            "note" => "sometimes",
         ], [
             "required" => ":attribute harus diisi",
             "numeric" => ":attribute harus berupa angka",
@@ -250,5 +260,16 @@ class MasterPemetaanController extends Controller
                 "data" => []
             ]);
         }
+    }
+
+    public function ApiChartMasterPemetaan()
+    {
+       $bulan = [1,2,3,4,5,6,7,8,9,10,11,12];
+       $data = [];
+       foreach($bulan as $b)
+       {
+           $data[] = ProfilePemetaan::whereMonth("created_at",$b)->whereYear("created_at",date("Y"))->where("status","accepted")->count();
+       }
+       return response()->json($data);
     }
 }

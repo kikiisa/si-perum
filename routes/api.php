@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/pemetaan',[MasterPemetaanController::class,'ApiMasterPemetaan'])->name("map");
-
+Route::get('/chart-pemetaan',[MasterPemetaanController::class,"ApiChartMasterPemetaan"])->name("chart-pemetaan");
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

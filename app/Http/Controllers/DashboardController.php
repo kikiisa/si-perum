@@ -10,13 +10,18 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $data = Auth::check() ? ProfilePemetaan::all()->where("user_id",Auth::user()->id) : ProfilePemetaan::all();
         if(!Auth::check())
         {
             return response()->view("backend.dashboard.index-admin",[
-                'title' => 'Dashboard - SIPERUM Admin'
+                'title' => 'Dashboard - SIPERUM Admin',
+                'totalData' => $data->count(), 
+                'ditolak'   => $data->where("status","rejected")->count(),
+                'diterima'   => $data->where("status","accepted")->count(),
+                'pending'   => $data->where("status","pending")->count(),
             ]);
         }else{  
-            $data = ProfilePemetaan::all()->where("user_id",Auth::user()->id);
+            
             return response()->view("backend.dashboard.index-user",[
                 'title' => 'Dashboard - SIPERUM User',
                 'totalData' => $data->count(), 

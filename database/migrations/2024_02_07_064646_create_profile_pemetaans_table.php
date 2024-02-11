@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('profile_pemetaans', function (Blueprint $table) {
             $table->id();
             $table->uuid("uuid");
-            $table->foreignId("user_id")->constrained("users")->onDelete("cascade");
+            // $table->foreignId("user_id")->constrained("users")->onDelete("cascade");
+            $table->foreignId("user_id");
             $table->string("nama_perumahan");
             $table->string("alamat_perumahan");
             $table->text("deskripsi");
@@ -29,8 +30,9 @@ return new class extends Migration
             $table->string("izin_prinsip");
             $table->string("izin_lokasi");
             $table->string("izin_badan_lingkungan_hidup");
-            $table->string("izin_da mpak_lalu_lintas");
+            $table->string("izin_dampak_lalu_lintas");
             $table->enum("status",["pending","accepted","rejected"])->default("pending");
+            $table->string("profile");
             $table->string("note")->nullable();
             $table->timestamps();
         });

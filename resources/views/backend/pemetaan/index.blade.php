@@ -27,6 +27,7 @@
                                     <table class="table table-striped" id="table1">
                                         <thead>
                                             <tr>
+                                                <th>Nama Perusahaan</th>
                                                 <th>Nama Perumahaan</th>
                                                 <th>Alamat</th>
                                                 <th>Luas Lahan</th>
@@ -37,6 +38,15 @@
                                         <tbody>
                                             @foreach ($data as $item)
                                                 <tr>
+                                                    <td>
+                                                        @if ($item->vendor->name == "default")
+                                                            <span class="badge bg-warning">
+                                                                Tidak di ketahui
+                                                            </span>
+                                                        @else
+                                                            {{$item->vendor->name}}
+                                                        @endif
+                                                    </td>
                                                     <td>{{$item->nama_perumahan}}</td>
                                                     <td>{{$item->alamat_perumahan}}</td>
                                                     <td>{{$item->luas_lahan}} m<sup>2</td>

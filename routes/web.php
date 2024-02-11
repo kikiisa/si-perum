@@ -1,12 +1,12 @@
 <?php
 
 use App\Http\Controllers\BerandaController;
-use App\Http\Controllers\BerkasController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MasterPemetaanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +30,10 @@ Route::prefix('account')->group(function () {
         Route::get("dashboard", [DashboardController::class, "index"])->name("dashboard");
         Route::resource("master-pemetaan",MasterPemetaanController::class);
         Route::resource("profile",ProfileController::class);        
-        
+      
+    });
+
+    Route::middleware(["multiauth","isAdmin"])->group(function(){
+        Route::resource("master-vendor",UserController::class);
     });
 });

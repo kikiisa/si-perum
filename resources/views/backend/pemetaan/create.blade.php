@@ -79,37 +79,44 @@
                                                     placeholder="Luas Lahan" class="form-control">
                                             </div>
                                         </div>
+                                            <div class="form-group">
+                                                <label>Gambar</label>
+                                                <input type="file" class="form-control" id="image" name="profile">
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">No</th>
-                                                <th scope="col">Document PDF</th>
-                                                <th scope="col">File Input</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($syarat as $label => $name)
-                                                <tr>
-                                                    <th scope="row">{{ $loop->index += 1 }}</th>
-                                                    <td>{{ $label }}</td>
-                                                    <td>
-                                                        <div class="form-group">
-                                                            <input class="form-control" type="file"
-                                                                name="{{ $name }}">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                    <button class="btn btn-primary">SIMPAN DATA</button>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">No</th>
+                                                        <th scope="col">Document PDF</th>
+                                                        <th scope="col">File Input</th>
+        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($syarat as $label => $name)
+                                                        <tr>
+                                                            <th scope="row">{{ $loop->index += 1 }}</th>
+                                                            <td>{{ $label }}</td>
+                                                            <td>
+                                                                <div class="form-group">
+                                                                    <input class="form-control" type="file"
+                                                                        name="{{ $name }}">
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                            <button class="btn btn-primary">SIMPAN DATA</button>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
-
                     </div>
                 </section>
             </div>
@@ -117,6 +124,7 @@
     </div>
     <script src="{{ asset('vendor/leaflet/leaflet.js') }}" type="text/javascript"></script>
     <script src="{{ asset('vendor/axios.min.js') }}"></script>
+    
     <script>
         var map = L.map('map').setView([0.556174, 123.058548], 13);
         let lat = document.getElementById('lat')

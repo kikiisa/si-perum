@@ -10,19 +10,19 @@
                 </a>
             </header>
             <div class="page-heading">
-                <h3>Manajemen Akun</h3>
+                <h3>Profile Akun <strong>{{$data->name}}</strong></h3>
             </div>
             <div class="page-content">
                 <div class="row">
                     <div class="col-12 col-lg-4">
                         <div class="card">
-                            @if (Auth::user()->profile == "default")
+                            @if ($data->profile == "default.png")
                                 <img class="card-img" src="{{ asset('assets/image/user.png') }}" alt="avatar">
                             @else
-                                <img class="card-img" src="{{ asset(Auth::user()->profile) }}" alt="avatar">
+                                <img class="card-img" src="{{ asset($data->profile) }}" alt="avatar">
                             @endif
                             <div class="card-body text-center">
-                                <h3>{{Auth::user()->name}}</h3>
+                                <h3>{{$data->name}}</h3>
                                 <p class="text-small">Developer Perumahaan</p>
                             </div>
                         </div>
@@ -30,23 +30,23 @@
                     <div class="col-12 col-lg-8">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{Route('profile.update',Auth::user()->id)}}" enctype="multipart/form-data" method="POST">
+                                <form action="{{Route('master-vendor.update',$data->id)}}" enctype="multipart/form-data" method="POST">
                                     @csrf
                                     @method("PUT")
                                     <div class="form-group">
                                         <label for="name" class="form-label">Username</label>
                                         <input type="text" name="username" id="name" class="form-control"
-                                            placeholder="Username" value="{{Auth::user()->username}}">
+                                            placeholder="Username" value="{{$data->username}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="name" class="form-label">Nama Perusahaan</label>
                                         <input type="text" name="name" id="name" class="form-control"
-                                            placeholder="Nama Perusahaan" value="{{Auth::user()->name}}">
+                                            placeholder="Nama Perusahaan" value="{{$data->name}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="email" class="form-label">Email</label>
                                         <input type="text" name="email" id="email" class="form-control"
-                                            placeholder="Email Perusahaan" value="{{Auth::user()->email}}">
+                                            placeholder="Email Perusahaan" value="{{$data->email}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="profile">Profile</label>

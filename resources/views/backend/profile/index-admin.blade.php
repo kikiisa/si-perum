@@ -16,41 +16,33 @@
                 <div class="row">
                     <div class="col-12 col-lg-4">
                         <div class="card">
-                            @if (Auth::user()->profile == "default")
-                                <img class="card-img" src="{{ asset('assets/image/user.png') }}" alt="avatar">
-                            @else
-                                <img class="card-img" src="{{ asset(Auth::user()->profile) }}" alt="avatar">
-                            @endif
+                            <img class="card-img" src="{{ asset('assets/image/user.png') }}" alt="avatar">
                             <div class="card-body text-center">
-                                <h3>{{Auth::user()->name}}</h3>
-                                <p class="text-small">Developer Perumahaan</p>
+                                <h3>{{Auth::guard("operators")->user()->name}}</h3>
+                                <p class="text-small">Operator</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-8">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{Route('profile.update',Auth::user()->id)}}" enctype="multipart/form-data" method="POST">
+                                <form action="{{Route('profile.update',Auth::guard('operators')->user()->id)}}" enctype="multipart/form-data" method="POST">
                                     @csrf
                                     @method("PUT")
                                     <div class="form-group">
                                         <label for="name" class="form-label">Username</label>
                                         <input type="text" name="username" id="name" class="form-control"
-                                            placeholder="Username" value="{{Auth::user()->username}}">
+                                            placeholder="Username" value="{{Auth::guard('operators')->user()->username}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="name" class="form-label">Nama Perusahaan</label>
                                         <input type="text" name="name" id="name" class="form-control"
-                                            placeholder="Nama Perusahaan" value="{{Auth::user()->name}}">
+                                            placeholder="Nama Perusahaan" value="{{Auth::guard('operators')->user()->name}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="email" class="form-label">Email</label>
                                         <input type="text" name="email" id="email" class="form-control"
-                                            placeholder="Email Perusahaan" value="{{Auth::user()->email}}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="profile">Profile</label>
-                                        <input type="file" name="profile" id="profile" class="form-control">
+                                            placeholder="Email Perusahaan" value="{{Auth::guard('operators')->user()->email}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="">Password Lama</label>

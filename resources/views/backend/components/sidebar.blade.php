@@ -50,16 +50,10 @@
                 </li>
                 @if (!Auth::check())
                    
-                    <li class="sidebar-item">
-                        <a href="form-layout.html" class="sidebar-link">
+                    <li class="sidebar-item {{ Route::currentRouteName() == 'master-vendor.index' ? 'active' : '' }}">
+                        <a href="{{ Route('master-vendor.index') }}" class="sidebar-link">
                             <i class="bi bi-people"></i>
-                            <span>Akun Vendor</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="form-layout.html" class="sidebar-link">
-                            <i class="bi bi-journal"></i>
-                            <span>Laporan</span>
+                            <span>Master Vendor</span>
                         </a>
                     </li>
                 @endif
