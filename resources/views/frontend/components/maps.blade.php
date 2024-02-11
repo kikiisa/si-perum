@@ -17,7 +17,9 @@
     </div>
 </section>
 <script src="{{ asset('vendor/leaflet/leaflet.js') }}" type="text/javascript"></script>
+
 <script src="{{asset('vendor/axios.min.js')}}"></script>
+
 <script>
     var map = L.map('map').setView([0.556174, 123.058548], 15);
     let lat = document.getElementById('lat')
@@ -52,7 +54,7 @@
                                 20
                             ], // size of the icon
                         })
-                }).addTo(map).bindPopup(`Nama Perumahaan : ${data.nama_perumahan}`).openPopup()
+                }).addTo(map).bindPopup(`Nama Perumahaan : ${data.nama_perumahan}`)
                 markerWithRadius(data)
             })
         }catch(error)

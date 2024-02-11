@@ -93,7 +93,7 @@
                         <div class="card">
 
                             <div class="card-header">
-                                <h4>Grafik Pertumbuhan Persebaran</h4>
+                                <h4>Grafik Pertumbuhan Persebaran Tahun {{date('Y')}}</h4>
                             </div>
                             <div class="card-body">
                                 <div id="chart-profile-visit"></div>

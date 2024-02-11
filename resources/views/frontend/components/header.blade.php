@@ -1,7 +1,7 @@
-<header class="mb-5">
+<header class="mb-2">
     <nav class="navbar navbar-expand-lg bg-body-tertiary shadow">
-        <div class="container">
-            <a class="navbar-brand" href="#"><strong><i class="bi bi-pin-fill"></i>
+        <div class="container text-center">
+            <a class="navbar-brand" href="#"><strong><i class="bi bi-geo-alt"></i>
                     SI-PERUM</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -11,7 +11,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Beranda</a>
+                        <a class="nav-link active" aria-current="page" href="/">Beranda</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{Route("login")}}">Login</a>

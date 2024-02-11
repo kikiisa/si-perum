@@ -24,6 +24,7 @@
                 <div class="page-content">
                     @include('frontend.components.hero')
                     @include('frontend.components.statistik')
+                    @include('frontend.components.item')
                     @include('frontend.components.maps')
                 </div>
             </div>
