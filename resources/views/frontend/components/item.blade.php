@@ -1,4 +1,4 @@
-<section class="row justify-content-start container">
+<section class="row justify-content-center container">
     <h3 class="text-center mb-4">Informasi Perumahan</h3>
         @forelse ($data as $item)
             <div class="col-lg-4">
@@ -13,9 +13,7 @@
                             </p>
                             <a href="#" class="card-link"><small><i class="bi bi-geo-alt"></i> {{$item->alamat_perumahan}}</small></a>
                             <a href="{{Route('detail', $item->uuid)}}" class="btn btn-primary mt-3 ">Lihat Lokasi Perumahaan</a>
-                        
                         </div>
-                        
                     </div>
                 </div>
             </div>
