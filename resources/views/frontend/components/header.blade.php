@@ -25,7 +25,7 @@
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" name="q" type="search" placeholder="Cari perumahan"
+                    <input class="form-control me-2" name="q" type="search" required="true" placeholder="Cari perumahan"
                         aria-label="Search">
                     <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
                 </form>

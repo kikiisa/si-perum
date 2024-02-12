@@ -45,7 +45,8 @@
         try
         {
             const response = await axios.get("{{Route('map')}}");
-            const { data } = response.data
+            const data = response.data.data
+            
             data.map((data,index) => {
                 L.marker([data.latitude, data.longitude], {
                         icon: L.icon({

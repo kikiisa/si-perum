@@ -258,12 +258,12 @@ class MasterPemetaanController extends Controller
 
     public function ApiMasterPemetaan()
     {
-        $data = ProfilePemetaan::all();
+        $data = ProfilePemetaan::where("status","accepted");
         if($data->count() > 0)
         {
             return response()->json([
                 "status" => TRUE,
-                "data" => $data->where("status","accepted")
+                "data" => $data->get()
             ]);
         }else{
             return response()->json([
