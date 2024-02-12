@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary shadow">
         <div class="container text-center">
             <a class="navbar-brand" href="#"><strong><i class="bi bi-geo-alt"></i>
-                    SI-PERUM</strong></a>
+                    {{$app->title}}</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -19,6 +19,9 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{Route("register")}}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{Route("tentang-kami")}}">Tentang Kami</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">

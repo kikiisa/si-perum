@@ -84,7 +84,6 @@
                                             <input type="file" class="form-control" id="image" name="profile">
                                         </div>
                                     </div>
-                                </form>
                             </div>
                             <div class="card">
                                 <div class="card-body">

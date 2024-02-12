@@ -28,6 +28,7 @@
                     @include('frontend.components.maps')
                 </div>
             </div>
+            @include('frontend.components.footer')
         </div>
     </div>
     <script src="{{ asset('assets/static/js/components/dark.js') }}"></script>

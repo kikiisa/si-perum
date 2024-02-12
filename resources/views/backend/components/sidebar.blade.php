@@ -48,6 +48,12 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
+                <li class="sidebar-item {{ Route::currentRouteName() == 'master-pemetaan.index' ? 'active' : '' }}">
+                    <a href="{{ Route('master-pemetaan.index') }}" class="sidebar-link">
+                        <i class="bi bi-journal"></i>
+                        <span>Master Pemetaan</span>
+                    </a>
+                </li>
                 @if (!Auth::check())
                    
                     <li class="sidebar-item {{ Route::currentRouteName() == 'master-vendor.index' ? 'active' : '' }}">
@@ -56,14 +62,13 @@
                             <span>Master Vendor</span>
                         </a>
                     </li>
+                    <li class="sidebar-item {{ Route::currentRouteName() == 'pengaturan.index' ? 'active' : '' }}">
+                        <a href="{{ Route('pengaturan.index') }}" class="sidebar-link">
+                            <i class="bi bi-gear"></i>
+                            <span>Pengaturan</span>
+                        </a>
+                    </li>
                 @endif
-                <li class="sidebar-item {{ Route::currentRouteName() == 'master-pemetaan.index' ? 'active' : '' }}">
-                    <a href="{{ Route('master-pemetaan.index') }}" class="sidebar-link">
-                        <i class="bi bi-journal"></i>
-                        <span>Master Pemetaan</span>
-                    </a>
-                </li>
-               
                 <li class="sidebar-item">
                     <a href="{{Route('profile.index')}}" class="sidebar-link">
                         <i class="bi bi-lock"></i>

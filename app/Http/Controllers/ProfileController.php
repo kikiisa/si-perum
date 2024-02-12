@@ -13,6 +13,7 @@ class ProfileController extends Controller
 {
     private $path = "data/profile/";
     private $upload;
+    
     public function __construct()
     {
         $this->upload = new UploadService();
@@ -137,7 +138,7 @@ class ProfileController extends Controller
                 }
             }
         } else {
-            
+
             $data = Operator::find(Auth::guard('operators')->user()->id);
             if ($request->old != "" && $request->password != "") {
 

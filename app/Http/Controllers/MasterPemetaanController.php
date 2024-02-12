@@ -246,6 +246,7 @@ class MasterPemetaanController extends Controller
         $this->upload->removedOneFiles($data->izin_lokasi);
         $this->upload->removedOneFiles($data->izin_badan_lingkungan_hidup);
         $this->upload->removedOneFiles($data->izin_dampak_lalu_lintas);
+        $this->upload->removedOneFiles($data->profile);
         $data->delete();
         if($data)
         {

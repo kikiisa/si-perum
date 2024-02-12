@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengaturan;
 use App\Models\ProfilePemetaan;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,7 @@ class BerandaController extends Controller
                 'diterima'   => $data->where("status", "accepted")->count(),
                 'pending'   => $data->where("status", "pending")->count(),
                 'data'      => $data,
+                "app" =>    Pengaturan::all()->first(),
             ]);
         }else{
            
@@ -30,6 +32,7 @@ class BerandaController extends Controller
                 'diterima'   => $data->where("status", "accepted")->count(),
                 'pending'   => $data->where("status", "pending")->count(),
                 'data'      => ProfilePemetaan::with("vendor")->where("status","accepted")->paginate(5),
+                "app" =>    Pengaturan::all()->first(),
             ]);
 
         }
@@ -40,7 +43,15 @@ class BerandaController extends Controller
         $data = ProfilePemetaan::with("vendor")->where("uuid",$id)->first();
         return response()->view("frontend.detail", [
             "title" => $data->nama_perumahan,
-            "data" => $data
+            "data" => $data,
+            "app" => Pengaturan::all()->first(),
+        ]);
+    }
+
+    public function about(){
+        return response()->view("frontend.about", [
+            "title" => "Tentang Kami - SIPERUM",
+            "app" => Pengaturan::all()->first(),
         ]);
     }
 }
